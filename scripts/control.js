@@ -1284,7 +1284,7 @@ function game(){
     });
     
     $returnToLogin.click(function() {
-        window.location.href = "cover.html";
+        window.location.href = "../index.html";
     });
     
     $showHelp.click(function() {

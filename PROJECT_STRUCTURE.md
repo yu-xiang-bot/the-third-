@@ -1,7 +1,7 @@
 # 双锋对决项目结构说明
 
 ## 项目概述
-"双锋对决" (Crumble) 是一款使用HTML5+JavaScript编写的2D横版双人格斗类本地网页游戏。
+"双锋对决" 是一款使用HTML5+JavaScript编写的2D横版双人格斗类本地网页游戏。
 
 ## 项目目录结构
 
@@ -31,14 +31,12 @@
 
 ### HTML页面 (pages/)
 - `index.html`: 游戏主界面
-- `cover.html`: 游戏封面页/启动页
 - `login.html`: 用户登录页面
 - `leaderboard.html`: 排行榜页面
 - `init-database.html`: 数据库初始化页面
 
 ### JavaScript脚本 (scripts/)
 - `control.js`: 游戏核心逻辑和控制
-- `cover.js`: 封面页脚本
 - `jquery.min.js`: jQuery库
 - `game-data-manager.js`: 游戏数据管理
 - `game-integration.js`: 游戏数据集成
@@ -46,7 +44,7 @@
 
 ### 样式文件 (styles/)
 - `new.css`: 游戏主界面样式
-- `cover.css`: 封面页样式
+- `cover.css`: 主页样式
 
 ### 静态资源 (assets/)
 - `images/`: 图片资源
