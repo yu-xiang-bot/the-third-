@@ -314,6 +314,41 @@
             border-color: #33cc00;
             text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
         }
+
+        /* 登录成功特别样式 */
+        .message.login-success {
+            background: linear-gradient(45deg, #ff3366, #ffcc00);
+            color: #fff;
+            border-color: #fff;
+            border-width: 3px;
+            font-size: 1.4rem;
+            text-align: center;
+            animation: glowPulse 1.5s infinite alternate;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.7);
+        }
+
+        /* 注册成功特别样式 */
+        .message.register-success {
+            background: linear-gradient(45deg, #33cc00, #33ccff);
+            color: #fff;
+            border-color: #fff;
+            border-width: 3px;
+            font-size: 1.4rem;
+            text-align: center;
+            animation: glowPulse 1.5s infinite alternate;
+            box-shadow: 0 0 20px rgba(51, 204, 0, 0.7);
+        }
+
+        @keyframes glowPulse {
+            0% { 
+                transform: rotate(-1deg) scale(1); 
+                box-shadow: 0 0 20px rgba(255, 51, 102, 0.7);
+            }
+            100% { 
+                transform: rotate(1deg) scale(1.05); 
+                box-shadow: 0 0 30px rgba(255, 51, 102, 1);
+            }
+        }
         
         .message::before {
             content: "✎";
@@ -476,9 +511,22 @@
         let isLoginForm = true;
         
         // 显示消息
-        function showMessage(message, isError = false) {
+        function showMessage(message, isError = false, messageType = null) {
             messageDiv.textContent = message;
-            messageDiv.className = `message ${isError ? 'error' : 'success'}`;
+            
+            // 根据消息类型设置不同的样式
+            if (messageType === 'login-success') {
+                messageDiv.className = 'message login-success';
+                // 添加庆祝图标
+                messageDiv.innerHTML = '<div style="font-size: 2rem;">🎉</div><div>' + message + '</div>';
+            } else if (messageType === 'register-success') {
+                messageDiv.className = 'message register-success';
+                // 添加庆祝图标
+                messageDiv.innerHTML = '<div style="font-size: 2rem;">✨</div><div>' + message + '</div>';
+            } else {
+                messageDiv.className = `message ${isError ? 'error' : 'success'}`;
+            }
+            
             messageDiv.style.display = 'block';
             
             // 5秒后自动隐藏消息
@@ -530,7 +578,7 @@
                 
                 // 登录成功，保存用户信息到localStorage
                 localStorage.setItem('user', JSON.stringify(data.user));
-                showMessage('登录成功！');
+                showMessage('欢迎来到双锋对决', false, 'login-success');
                 
                 // 跳转到游戏页面
                 setTimeout(() => {
@@ -573,7 +621,7 @@
                     throw error;
                 }
                 
-                showMessage('注册成功！请检查邮箱进行验证', false);
+                showMessage('注册成功！请登录您的账户', false, 'register-success');
                 
                 // 注册成功后切换回登录表单
                 setTimeout(() => {
